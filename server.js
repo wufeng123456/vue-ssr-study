@@ -6,19 +6,22 @@ const vueServerRender = require('vue-server-renderer')
 const fs = require('fs')
 const path = require('path');
 
-const vm = new Vue({
-    data() {
-        return {
-            msg: 'hello vue-ssr'
-        }
-    },
-    template: `<div>{{msg}}</div>`
-})
+// const vm = new Vue({
+//     data() {
+//         return {
+//             msg: 'hello vue-ssr'
+//         }
+//     },
+//     template: `<div>{{msg}}</div>`
+// })
 
 const template = fs.readFileSync(path.resolve(__dirname, './dist/index.ssr.html'), 'utf-8')
-const serverBundle = fs.readFileSync(path.resolve(__dirname, './dist/server.bundle.js'), 'utf-8')
+const serverBundle = require(path.resolve(__dirname, './dist/vue-ssr-server-bundle.json'))
+const clientManifest = require(path.resolve(__dirname, './dist/vue-ssr-client-manifest.json'))
+console.log(clientManifest)
 const render = vueServerRender.createBundleRenderer(serverBundle, {
-  template: template
+  template,
+  clientManifest
 })
  
 const app = new Koa();

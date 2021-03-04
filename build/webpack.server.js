@@ -1,4 +1,5 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin')
+const ServerRenderPlugin = require('vue-server-renderer/server-plugin')
 const path = require('path')
 const { merge } = require('webpack-merge')
 const base = require('./webpack.base')
@@ -11,11 +12,14 @@ module.exports = merge(base, {
     entry: {
         server: resolve('../src/entry/server.js'),
     },
+    // entry: resolve('../src/entry/server.js'),
     target: 'node',
     output: {
+        filename: 'server.bundle.js',
         libraryTarget: 'commonjs2'
     },
     plugins: [
+        new ServerRenderPlugin(),
         new HtmlWebpackPlugin({
             filename: 'index.ssr.html',
             template: resolve('../public/index.ssr.html'),
@@ -24,6 +28,6 @@ module.exports = merge(base, {
                 // 魔法注释不能被删除
                 removeComments: false
             }
-        })
+        }),
     ]
 })

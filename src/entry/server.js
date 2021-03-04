@@ -1,5 +1,6 @@
-import creatApp from '../main'
+import creatApp from '../main.js'
 
 export default () => {
-    return creatApp()
+    const { app } = creatApp()
+    return app
 }

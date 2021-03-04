@@ -7,7 +7,6 @@ const resolve = dir => {
 
 module.exports = {
     output: {
-        filename: '[name].bundle.js',
         path: resolve('../dist')
     },
     resolve: {
