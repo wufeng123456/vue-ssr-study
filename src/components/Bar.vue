@@ -24,5 +24,7 @@ export default {
 </script>
 
 <style>
-
+.bar-container {
+  background: aqua;
+}
 </style>
