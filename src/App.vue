@@ -1,5 +1,5 @@
 <template>
-  <div class="container">
+  <div id="app">
       <div>{{`我是App， ${msg}`}}</div>
       <router-link to="/">Foo页面</router-link>
       <router-link to="/bar">Bar页面</router-linK>

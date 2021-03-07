@@ -1,22 +1,33 @@
 <template>
-  <div class="foo-container">
-      {{msg}}
-  </div>
+ <div>
+   <p>Foo页面: {{username}}</p>
+    <button @click="handleClick">点击事件</button>
+ </div>
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
+
 export default {
   data() {
     return {
-        msg: 'foo'
-    }
+      name: 'gouge'
+    };
   },
-  components: {
-      
+  computed: {
+    ...mapGetters([
+      'username'
+    ])
+  },
+  asyncData(store) {
+    return store.dispatch('setUserName', 'tony')
+  },
+  methods: {
+    handleClick() {
+      this.name = this.name.split('').reverse().join('')
+      this.$store.dispatch('setUserName', this.name)
+      alert('点击成功')
+    }
   }
-}
+};
 </script>
-
-<style>
-
-</style>

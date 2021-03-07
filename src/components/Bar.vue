@@ -1,30 +1,20 @@
 <template>
-  <div class="bar-container">
-      {{msg}}
-      <button @click="click">点击</button>
-  </div>
+ <div class="bar">
+   Bar页面
+ </div>
 </template>
 
 <script>
 export default {
   data() {
-    return {
-        msg: 'bar'
-    }
+    return {};
   },
-  components: {
-      
-  },
-  methods: {
-    click() {
-      alert('点击成功')
-    }
-  }
-}
+  components: {}
+};
 </script>
 
-<style>
-.bar-container {
+<style scoped>
+.bar {
   background: aqua;
 }
 </style>

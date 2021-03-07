@@ -34,9 +34,8 @@ router.get("/", async ctx => {
     });
   });
 });
-app.use(Static(path.resolve(__dirname, "dist")));
 app.use(router.routes());
-
+app.use(Static(path.resolve(__dirname, "dist")));
 app.use(async ctx => {
   try {
     ctx.body = await new Promise((resolve, reject) => {
